@@ -1,0 +1,20 @@
+const express = require('express');
+const router = express.Router();
+const transferService = require('../service/transferService');
+
+router.post('/', (req, res) => {
+  try {
+    const transfer = transferService.transfer(req.body);
+    res.status(201).json(transfer);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+router.get('/', (req, res) => {
+  res.json(transferService.getTransfers());
+
+  res.status(405).json({ error: 'Method Not Allowed' });
+});
+
+module.exports = router;
