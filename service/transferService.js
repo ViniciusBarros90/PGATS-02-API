@@ -8,7 +8,7 @@ function transfer({ from, to, amount }) {
   const sender = users.find(u => u.username === from);
   const recipient = users.find(u => u.username === to);
   if (!sender || !recipient) {
-    throw new Error('mensagem diferente');
+    throw new Error('Sender or recipient not found');
   }
   if (sender.balance < amount) {
     throw new Error('Insufficient balance');
