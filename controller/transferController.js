@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
   res.json(transferService.getTransfers());
-
+transferController.test
   res.status(405).json({ error: 'Method Not Allowed' });
 });
 
