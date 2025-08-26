@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userService = require('../service/userService');
+const { generateToken } = require('../service/authService');
 
 router.post('/register', (req, res) => {
   try {
@@ -14,7 +15,8 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
   try {
     const user = userService.loginUser(req.body);
-    res.json(user);
+    const token = generateToken(user);
+    res.json({ user, token });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
