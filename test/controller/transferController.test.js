@@ -51,7 +51,7 @@ afterEach(() => {
             sinon.restore();
         });
 
-      it.only('Usando Mocks: Quando  informo valores válidos eu tenho sucesso com 201 CREATED', async () => {
+      it('Usando Mocks: Quando  informo valores válidos eu tenho sucesso com 201 CREATED', async () => {
       //Mocar apenas a função externa transfer do Service
         const transferServiceMock = sinon.stub(transferService, 'transfer');
           transferServiceMock.returns({
@@ -64,7 +64,7 @@ afterEach(() => {
         const response = await request(app)
           .post('/api/transfers')
           .send({
-             from: "vinicius",
+             from: "viniciussss",
              to: "julio",
              amount: 100
              });
