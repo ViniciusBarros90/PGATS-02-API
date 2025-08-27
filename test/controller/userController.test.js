@@ -15,7 +15,7 @@ describe('User Controller', () => {
     describe('POST /api/users/register', () => {
 
       
-        it.only('Quando não informo dados obrigatórios no registro de login, recebo 400', async () => {
+        it('Quando não informo dados obrigatórios no registro de login, recebo 400', async () => {
             const response = await request(app)
                 .post('/api/users/register')
                 .send({
@@ -28,7 +28,7 @@ describe('User Controller', () => {
             expect(response.body).to.have.property('error', 'Username and password are required');
         });
 
-        it.only('Quando registrar um novo usuário com sucesso, recebo 201', async () => {
+        it('Quando registrar um novo usuário com sucesso, recebo 201', async () => {
             const response = await request(app)
                 .post('/api/users/register')
                 .send({
@@ -40,7 +40,7 @@ describe('User Controller', () => {
             expect(response.status).to.equal(201);
         });
 
-        it.only('Quando registro um usuário existente, recebo 400', async () => {
+        it('Quando registro um usuário já existente, recebo 400', async () => {
             const response = await request(app)
                 .post('/api/users/register')
                 .send({
@@ -52,8 +52,10 @@ describe('User Controller', () => {
             expect(response.status).to.equal(400);
             expect(response.body).to.have.property('error', 'User already exists');
         });
+    });
 
-        it.only('Quando faço login com credenciais pendentes, recebo 400', async () => {
+    describe('POST /api/users/login', () => {
+        it('Quando faço login com credenciais pendentes, recebo 400', async () => {
             const response = await request(app)
                 .post('/api/users/login')
                 .send({
@@ -66,7 +68,7 @@ describe('User Controller', () => {
             expect(response.body).to.have.property('error', 'Username and password are required');
         });
 
-        it.only('Quando faço login com credenciais inválidas, recebo 400', async () => {
+        it('Quando faço login com credenciais inválidas, recebo 400', async () => {
             const response = await request(app)
                 .post('/api/users/login')
                 .send({
@@ -81,6 +83,7 @@ describe('User Controller', () => {
 
             
             
-        });
+        
 
     });
+});
