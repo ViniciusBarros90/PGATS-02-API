@@ -59,7 +59,7 @@ describe('User Controller', () => {
             const response = await request(app)
                 .post('/api/users/login')
                 .send({
-                    username: "Bia",
+                    username: "vinicius",
                     password: "",
                     isFavored: true
                 });
