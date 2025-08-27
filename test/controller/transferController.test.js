@@ -32,7 +32,7 @@ describe('Transfer Controller', () => {
 
 
 
-      it('Quando  informo remetente de destinatário inexistente recebo 400', async () => {
+      it('Quando informo remetente de destinatário inexistente recebo 400', async () => {
         const response = await request(app)
           .post('/api/transfers')
           .set('Authorization', `Bearer ${token}`)

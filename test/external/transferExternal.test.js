@@ -25,7 +25,7 @@ describe('Transfer Controller', () => {
         .set('Authorization', `Bearer ${token}`)
         .send({
           from: "vinicius",
-          to: "vanessa",
+          to: "maria",
           amount: 200
           });
 
