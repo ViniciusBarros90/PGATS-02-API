@@ -10,21 +10,36 @@ const transferService = require('../../service/transferService');
 const app = require('../../app');
 const { describe } = require('mocha');
 
+//Capturar token
+let token; 
+
+
 //Testes
 describe('Transfer Controller', () => {
-
-afterEach(() => {
-  sinon.restore();
-});
-
     describe('POST /api/transfers', () => {
+
+      beforeEach(async  () => {
+        const loginResponse = await request(app)
+          .post('/api/users/login')
+          .send({
+            username: 'vinicius',
+            password: 'julio'
+          });
+
+        token = loginResponse.body.token;
+      });
+
+
+
+
       it('Quando  informo remetente de destinatário inexistente recebo 400', async () => {
-      const response = await request(app)
-        .post('/api/transfers')
-        .send({
-          from: "vinicius",
-          to: "julio",
-          amount: 100
+        const response = await request(app)
+          .post('/api/transfers')
+          .set('Authorization', `Bearer ${token}`)
+          .send({
+            from: "vinicius",
+            to: "Sabrina",
+            amount: 200
           });
 
         expect(response.status).to.equal(400);
@@ -38,20 +53,21 @@ afterEach(() => {
             
         const response = await request(app)
           .post('/api/transfers')
+          .set('Authorization', `Bearer ${token}`)
           .send({
             from: "vinicius",
-            to: "julio",
+            to: "bb",
             amount: 100
                 });
 
         expect(response.status).to.equal(400);
         expect(response.body).to.have.property('error', 'Sender or recipient not found');
+      });   
+      
+            
+      
 
-            //Reseta o Mock
-            sinon.restore();
-        });
-
-      it('Usando Mocks: Quando  informo valores válidos eu tenho sucesso com 201 CREATED', async () => {
+      it('Usando Mocks: Quando informo valores válidos eu tenho sucesso com 201 CREATED', async () => {
       //Mocar apenas a função externa transfer do Service
         const transferServiceMock = sinon.stub(transferService, 'transfer');
           transferServiceMock.returns({
@@ -59,42 +75,41 @@ afterEach(() => {
             to: "julio",
             amount: 100,
             date: new Date().toISOString()
-            });
+          });
             
         const response = await request(app)
           .post('/api/transfers')
+          .set('Authorization', `Bearer ${token}`)
           .send({
-             from: "viniciussss",
-             to: "julio",
+             from: "",
+             to: "",
              amount: 100
-             });
+          });
 
         expect(response.status).to.equal(201);
 
             //Validação com Fixture
-            const respostaEperada = required('../fixture/respostas/quandoInformoValoresValidosEuTenhoSucessoCom201Created.json');
-            delete resposta.body.date;
-            delete respostaEperada.date;
-            expect(resposta.body).to.deep.equal(respostaEperada);
+        const respostaEperada = require('../fixture/respostas/quandoInformoValoresValidosEuTenhoSucessoCom201Created.json');
+          delete response.body.date;
+          delete respostaEperada.date;
+        expect(response.body).to.deep.equal(respostaEperada);
 
 
-            //expect(response.body).to.have.property('from', 'vinicius');
-            //expect(response.body).to.have.property('to', 'julio');
-            //expect(response.body).to.have.property('amount', 100);
-
-            //Reseta o Mock
-            sinon.restore();
-        });
-
+        //expect(response.body).to.have.property('from', 'vinicius');
+        //expect(response.body).to.have.property('to', 'julio');
+        //expect(response.body).to.have.property('amount', 100);
+                  
+      });
+    
     });
 
-    describe('GET /api/transfers', () => {
-        //it aqui
+      //Reseta o Mock
+      afterEach(() => {
+        sinon.restore();
+      });
 
-    });
 
-
-})
+});
                 
 
         
