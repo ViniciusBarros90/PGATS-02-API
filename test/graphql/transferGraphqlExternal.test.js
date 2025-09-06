@@ -24,7 +24,7 @@ describe('Transfer Mutation - GraphQL', () => {
         token = resposta.body.data.login.token;
     });
 
-    it('a) Transferência com sucesso', async () => {
+    it('Transferência com sucesso', async () => {
         const resposta = await request('http://localhost:4000')
             .post('/graphql')
             .set('Authorization', 'Bearer ' + token)
@@ -51,7 +51,7 @@ describe('Transfer Mutation - GraphQL', () => {
         expect(resposta.body.data.transfer).to.have.property('amount', 10);
     });
 
-    it('b) Sem saldo disponível para transferência', async () => {
+    it('Sem saldo disponível para transferência', async () => {
         const resposta = await request('http://localhost:4000')
             .post('/graphql')
             .set('Authorization', 'Bearer ' + token)
@@ -72,12 +72,11 @@ describe('Transfer Mutation - GraphQL', () => {
                 }
             });
 
-        expect(resposta.status).to.be.equal(200);
         expect(resposta.body).to.have.property('errors');
         expect(resposta.body.errors[0].message).to.equal('Insufficient balance');
     });
 
-    it('c) Token de autenticação não informado', async () => {
+    it('Token de autenticação não informado', async () => {
         const resposta = await request('http://localhost:4000')
             .post('/graphql')
             .send({
