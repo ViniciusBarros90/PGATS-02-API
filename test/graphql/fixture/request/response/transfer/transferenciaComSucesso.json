@@ -1,0 +1,9 @@
+{
+  "data": {
+    "transfer": {
+      "amount": 10,
+      "from": "vinicius",
+      "to": "julio"
+    }
+  }
+}

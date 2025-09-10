@@ -4,10 +4,10 @@ const sinon = require('sinon')
 const { expect } = require('chai');
 
 //Mock
-const transferService = require('../../service/transferService');
+const transferService = require('../../../service/transferService');
 
 //Aplicação
-const app = require('../../app');
+const app = require('../../../app');
 const { describe } = require('mocha');
 
 //Capturar token
@@ -90,15 +90,10 @@ describe('Transfer Controller', () => {
 
             //Validação com Fixture
         const respostaEperada = require('../fixture/respostas/quandoInformoValoresValidosEuTenhoSucessoCom201Created.json');
-          delete response.body.date;
-          delete respostaEperada.date;
+        delete response.body.date;
+        delete respostaEperada.date;
         expect(response.body).to.deep.equal(respostaEperada);
-
-
-        //expect(response.body).to.have.property('from', 'vinicius');
-        //expect(response.body).to.have.property('to', 'julio');
-        //expect(response.body).to.have.property('amount', 100);
-                  
+                      
       });
     
     });

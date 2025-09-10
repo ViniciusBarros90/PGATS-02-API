@@ -22,14 +22,24 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Rodar os testes de API via Controller
-      run: npm run test-controller
+    - name: Rodar os testes de API REST via Controller
+      run: npm run test-rest-controller
 
-    - name: Subir a API
-      run: npm start &
+    - name: Subir a API REST
+      run: npm run start-rest &
       
     - name: Esperar a API estar Funcionando
-      run: sleep 5
+      run: sleep 8
 
-    - name: Rodar os testes de API externo via HTTP
-      run: npm run test-external
+    - name: Rodar os testes de API REST externo via HTTP
+      run: npm run test-rest-external
+
+    - name: Subir a API GraphQL
+      run: npm run start-graphql &
+
+    - name: Esperar a API GraphQL estar Funcionando
+      run: sleep 8
+
+    - name: Rodar os testes externo de API GraphQL via HTTP
+      run: npm run test-graphql-external
+      
