@@ -22,6 +22,11 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Criar .env
+      run: |
+        echo "BASE_URL_REST=${{ secrets.BASE_URL_REST }}" >> .env
+        echo "BASE_URL_GRAPHQL=${{ secrets.BASE_URL_GRAPHQL }}" >> .env
+
     - name: Rodar os testes de API REST via Controller
       run: npm run test-rest-controller
 
@@ -33,12 +38,7 @@ jobs:
       
     - name: Esperar a API estar Funcionando
       run: sleep 8
-
-    - name: Criar .env
-      run: |
-        echo "BASE_URL_REST=${{ secrets.BASE_URL_REST }}" >> .env
-        echo "BASE_URL_GRAPHQL=${{ secrets.BASE_URL_GRAPHQL }}" >> .env
-
+   
     - name: Rodar os testes de API REST externo via HTTP
       run: npm run test-rest-external
   
