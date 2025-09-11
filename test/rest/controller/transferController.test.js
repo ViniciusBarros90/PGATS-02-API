@@ -15,7 +15,7 @@ let token;
 
 
 //Testes
-describe('Transfer Controller', () => {
+describe('API REST Transfer Controller', () => {
     describe('POST /api/transfers', () => {
 
       beforeEach(async  () => {

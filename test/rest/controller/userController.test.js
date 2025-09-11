@@ -11,7 +11,7 @@ const app = require('../../../app');
 const { describe } = require('mocha');
 
 //Testes
-describe('User Controller', () => {
+describe('API REST User Controller', () => {
     describe('POST /api/users/register', () => {
 
       

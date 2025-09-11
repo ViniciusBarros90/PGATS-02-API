@@ -1,12 +1,13 @@
 const request = require('supertest');
 const { expect } = require('chai');
+require('dotenv').config();
 
-describe('Transfer Mutation - GraphQL', () => {
+describe('API GRAPHQL Transfer External', () => {
     let token;
 
     before(async () => {
         const login = require('../fixture/request/login/mutationLogin.json');
-        const resposta = await request('http://localhost:4000/graphql')
+        const resposta = await request(process.env.BASE_URL_GRAPHQL)
             .post('')
             .send(login);
             
@@ -20,7 +21,7 @@ describe('Transfer Mutation - GraphQL', () => {
     it('Transferência com sucesso', async () => {
         const respostaEsperada = require('../fixture/request/response/transfer/transferenciaComSucesso.json');
 
-        const resposta = await request('http://localhost:4000/graphql')
+        const resposta = await request(process.env.BASE_URL_GRAPHQL)
             .post('')
             .set('Authorization', 'Bearer ' + token)
             .send(transfer);
@@ -32,7 +33,7 @@ describe('Transfer Mutation - GraphQL', () => {
     it('Sem saldo disponível para transferência', async () => {
         transfer.variables.amount = 100000000; 
 
-        const resposta = await request('http://localhost:4000/graphql')
+        const resposta = await request(process.env.BASE_URL_GRAPHQL)
             .post('')
             .set('Authorization', 'Bearer ' + token)
             .send(transfer);
@@ -42,8 +43,8 @@ describe('Transfer Mutation - GraphQL', () => {
     });
 
     it('Token de autenticação não informado', async () => {
-        const resposta = await request('http://localhost:4000')
-            .post('/graphql')
+        const resposta = await request(process.env.BASE_URL_GRAPHQL)
+            .post('')
             .send(transfer);
 
         expect(resposta.body).to.have.property('errors');
