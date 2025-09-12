@@ -12,7 +12,6 @@
     "start-graphql": "node graphql/server.js",
     "start-rest": "node server.js"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,6 +27,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "dotenv": "^17.2.2",
     "mochawesome": "^7.1.3"
   }
 }

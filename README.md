@@ -11,7 +11,9 @@ npm install express swagger-ui-express
   ```
 npm install express@4 swagger-ui-express apollo-server-express@3 graphql jsonwebtoken
 ```
+## Configuração
 
+Antes de seguir, crie um arquivo .env na pasta raiz contendo as propriedades BASE_URL_REST e BASE_URL_GRAPHQL com a URL desses serviços.
 
 ## Como rodar a API REST
 
