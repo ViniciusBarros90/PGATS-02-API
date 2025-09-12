@@ -27,6 +27,9 @@ jobs:
         echo "BASE_URL_REST=${{ secrets.BASE_URL_REST }}" >> .env
         echo "BASE_URL_GRAPHQL=${{ secrets.BASE_URL_GRAPHQL }}" >> .env
 
+    - name: Verificar conteúdo do .env (debug)
+      run: cat .env
+
     - name: Rodar os testes de API REST via Controller
       run: npm run test-rest-controller
 
