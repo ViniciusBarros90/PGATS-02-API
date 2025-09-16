@@ -1,0 +1,39 @@
+[
+    {
+        "nomeDoTeste": "Saldo insuficiente",
+        "transferJson": {
+            "query": "mutation Transfer($from: String!, $to: String!, $amount: Float!) { transfer(from: $from, to: $to, amount: $amount) { from to amount } }",
+            "variables": {
+                "from": "vinicius",
+                "to": "julio",
+                "amount": 10000.01
+            }
+        },
+        "mensagemEsperada": "Insufficient balance"
+    },
+    {
+        "nomeDoTeste": "Remetente não encontrado",
+        "transferJson": {
+            "query": "mutation Transfer($from: String!, $to: String!, $amount: Float!) { transfer(from: $from, to: $to, amount: $amount) { from to amount } }",
+            "variables": {
+                "from": "vinicius",
+                "to": "maria",
+                "amount": 15
+            }
+        },
+        "mensagemEsperada": "Sender or recipient not found"
+    }
+    ,
+    {
+        "nomeDoTeste": "Dados obrigatório",
+        "transferJson": {
+            "query": "mutation Transfer($from: String!, $to: String!, $amount: Float!) { transfer(from: $from, to: $to, amount: $amount) { from to amount } }",
+            "variables": {
+                "from": "vinicius",
+                "to": "",
+                "amount": 15
+            }
+        },  
+        "mensagemEsperada": "From, to, and amount are required"
+    }
+]
