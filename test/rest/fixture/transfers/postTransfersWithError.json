@@ -1,0 +1,12 @@
+[
+    {
+        "nomeDoTeste": "Destinatário inexistente",
+        "postTransfers": {
+                "from": "vinicius",
+                "to": "maria",
+                "amount": 200
+            },
+            "statusCode": 400,
+            "mensagemEsperada": "Sender or recipient not found"
+    }
+]
