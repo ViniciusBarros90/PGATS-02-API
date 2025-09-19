@@ -14,7 +14,7 @@ A aplicação inclui:
 
 ✅ Cobertura de testes via app, mock e chamadas externas
 
-✅ Simulações e spies com Sinon
+✅ Simulações com Sinon
 
 ✅ Integração com pipeline (CI/CD)
 
@@ -28,13 +28,13 @@ Mocha (test runner)
 
 Chai (assertions)
 
-Sinon (mocks e spies)
+Sinon (mocks)
 
 Supertest (testes de endpoints HTTP)
 
 dotenv (variáveis de ambiente)
 
-Padrões de teste:
+Padrões de teste
 
 Testes unitários com mock
 
