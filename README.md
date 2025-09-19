@@ -1,6 +1,46 @@
 # API de Transferências e Usuários
 
-Esta API permite o registro, login, consulta de usuários e transferências de valores entre usuários, com regras de negócio para aprendizado de testes automatizados.
+API REST - Login de Usuário
+
+Criei esta API RESTful para login de usuários utilizando a arquitetura em camadas, seguindo boas práticas de organização de código, responsabilidade única e separação de preocupações.
+
+A aplicação inclui:
+
+✅ Autenticação de usuários
+
+✅ Execução de testes automatizados
+
+✅ Ambiente de configuração com .env
+
+✅ Cobertura de testes via app, mock e chamadas externas
+
+✅ Simulações e spies com Sinon
+
+✅ Integração com pipeline (CI/CD)
+
+🔧 Tecnologias e Ferramentas Utilizadas
+
+Node.js + Express
+
+Arquitetura em camadas (Controller, Service, Model)
+
+Mocha (test runner)
+
+Chai (assertions)
+
+Sinon (mocks e spies)
+
+Supertest (testes de endpoints HTTP)
+
+dotenv (variáveis de ambiente)
+
+Padrões de teste:
+
+Testes unitários com mock
+
+Testes de integração com app
+
+Testes externos com chamada via BASE_URL_REST
 
 ## Instalação
 
