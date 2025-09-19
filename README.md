@@ -18,7 +18,7 @@ A aplicação inclui:
 
 ✅ Integração com pipeline (CI/CD)
 
-🔧 Tecnologias e Ferramentas Utilizadas
+🔧 **Tecnologias e Ferramentas Utilizadas**
 
 Node.js + Express
 
