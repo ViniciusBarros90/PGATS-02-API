@@ -2,7 +2,7 @@
 
 API REST - Login de Usuário
 
-Criei esta API RESTful para login de usuários utilizando a arquitetura em camadas, seguindo boas práticas de organização de código, responsabilidade única e separação de preocupações.
+Criei esta API REST para login de usuários utilizando a arquitetura em camadas, seguindo boas práticas de organização de código, responsabilidade única e separação de preocupações.
 
 A aplicação inclui:
 
