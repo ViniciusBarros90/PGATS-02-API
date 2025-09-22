@@ -40,6 +40,8 @@ Testes unitários com mock
 
 Testes de integração com app
 
+Testes de integração externo
+
 Testes externos com chamada via BASE_URL_REST
 
 ## Instalação
